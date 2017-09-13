@@ -1,0 +1,373 @@
+
+/* Общие стили */
+*{
+	padding:0; margin:0;
+}
+img{
+	border:none;
+}
+ul{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+    color: #11999e;
+}
+
+a:hover {
+    text-decoration:underline;
+    color: #11999e;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+    background-image: url(../images/fon.jpg);
+    background-repeat: repeat;
+    background-color: #F0F0F0;  
+    padding: 20px 0;  
+}
+
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #11999e;
+}
+
+h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    color: #11999e;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.container {
+    width:90%;
+    margin:0 auto;
+    padding: 0px;
+    background-color: #F0F0F0;
+}
+
+.main-content {
+    padding: 30px;
+}
+
+/* Хедер и главное меню */
+
+header {
+    padding: 15px 0;
+}
+
+.site-head {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.head{
+    padding:15px 0;    
+    overflow:hidden;    
+    background-image: url(../images/banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;    
+}
+
+.navbar-my{
+    background-color: #30e3ca;
+    color: #333333;
+}
+
+.navbar-my ul li a{
+    color: #333333;
+    text-decoration: none;
+}
+
+.navbar-my ul li a:hover{
+    background-color: #11999e;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+li.active a {
+    background-color: #11999e;
+    color: #ffffff;
+}
+
+.dropdown-toggle:hover {
+    background-color: #11999e;
+    color: #ffffff;
+}
+
+.dropdown-menu {
+    background-color: #30e3ca;
+}
+
+.dropdown-menu li a {
+    background-color: #30e3ca;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #11999e;
+    color:#ffffff;
+}
+
+.dropdown-toggle:hover {
+    background-color: #11999e;
+    color:#ffffff;    
+}
+
+.open a:hover {
+    background-color: #11999e;
+    color:#ffffff;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: #11999e;
+    
+}
+
+/* меню администратора для текста*/
+
+.adminmenu {
+    margin-top: 20px;
+}
+
+.adminmenu ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.adminmenu ul li:last-child {
+    margin-right: 0;
+}
+
+.adminmenu ul li a {
+    color: #11999e;
+}
+
+/*  Список текстов - стили для шапки каждого текста */
+
+.view-text {    
+    border: 1px solid #888888;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.text-title {
+    font-size: 1.3em;
+    margin-bottom: 5px;    
+}
+
+.text-title a {
+    color: #11999e;
+    font-weight: bold;
+}
+
+/* Стили для текста */
+
+.text-head {
+    background-color: #dddddd;
+    margin-bottom: 30px;
+    padding: 20px 15px;
+}
+
+.content {    
+    padding: 20px;      
+}
+
+.content-row {
+    overflow:hidden;
+    margin-left: 50px;
+}
+
+.content-item {
+    float: left;
+    margin-right: 50px;
+}
+
+.content-item:last-child {
+    margin-right: 0;
+}
+
+.content-text {
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.note {
+    cursor: pointer;
+    color: #11999e;    
+}
+
+/* пагинация */
+
+.pager {
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.pager li {
+    display: inline-block;
+}
+
+.pager li a {
+    margin-right: 5px;
+    border-radius: 0;
+    padding: 5px 7px;
+    background-color: #30e3ca;
+    color: #333333;
+    text-decoration: none;
+    border: none;
+    font-size: 0.9em;
+}
+
+.pager li a:hover {
+    background-color: #11999e;
+    color: #ffffff;
+}
+
+.pager .selected a{
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #11999e;
+}
+
+.pager .previous > a, .pager .previous > span {
+    float: inherit;
+}
+
+.pager .next > a, .pager .next > span {
+    float: inherit;
+}
+
+/* формы для ввода */
+
+div.form span.required {
+    color: red;
+}
+
+.form-group input[type="text"] {    
+    margin: 5px 0;
+    border: none;
+    border: 1px solid #aaaaaa;
+    padding: 5px 10px;
+    width: 600px;
+    font-family: 'Roboto', sans-serif;    
+}
+
+.form-group textarea {
+    border: none;
+    border: 1px solid #aaaaaa;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    width: 600px;
+}
+
+.note {
+    font-style: italic;
+}
+
+
+input[type="submit"] {
+    background-color: #30e3ca;
+    border: medium none;
+    border-radius: 3px;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.2em;
+    margin: 20px 0;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 150px;
+}
+
+div.form select {
+    border: none;
+    border: 1px solid #aaaaaa;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #11999e;
+    color: #ffffff;
+}
+
+/* Персонажи - админка */
+
+.table-characters {
+    margin: 10px 0;
+    border: 1px solid #aaaaaa;
+    border-collapse: collapse;
+}
+
+.table-characters td, th {
+    border: 1px solid #aaaaaa;
+    padding: 5px 20px;
+} 
+
+
+
+/* футер */
+footer {
+    background-color: #aaaaaa;  
+    padding: 20px;
+    text-align: center;  
+}
+
+.footer-wrapper {
+    padding: 20px;
+    overflow: hidden;
+}
+
+.footer-column {
+    float: left;    
+    margin-left: 50px;   
+}
+
+.footer-column a {
+    color: #000000;
+    line-height: 1.5em;
+}
+
+.footer-copy {
+    overflow: hidden;
+    background-color: #F0F0F0;
+    padding: 10px 20px;
+    font-size:0.8em;
+    color: #222222;    
+}
+
+.footer-copy a {
+    color: #888888;
+}
+
+.copy{
+    float:left;
+    }
+.by-st{
+    float:right;
+}
