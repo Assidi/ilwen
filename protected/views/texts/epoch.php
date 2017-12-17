@@ -16,7 +16,7 @@ $this->menu=array(
 
 
 <h1><?=$epoch->name; ?> эпоха </h1>
-<img src="/images/<?= $epoch->picture; ?>"/>
+
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -64,7 +64,17 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'text'); ?><br />
-		<?php echo $form->textArea($model,'text',array('rows'=>6, 'cols'=>50)); ?>
+        <ul class="textarea-menu">
+            <li class="button-text" data-text="0"><i class="fa fa-bold"></i></li>
+            <li class="button-text" data-text="1"><i class="fa fa-italic"></i></li>
+            <li class="button-text" data-text="2"><i class="fa fa-underline"></i></li>
+            <li class="button-text" data-text="3"><i class="fa fa-strikethrough"></i></li>
+            <li class="button-text" data-text="4"><i class="fa fa-align-center"></i></li>    
+            <li class="button-text" data-text="5"><i class="fa fa-align-right"></i></li>
+            <li class="button-text" data-text="6"><i class="fa fa-link"></i></li>            
+            <li class="button-text" data-text="7">*</li>
+        </ul>  
+		<?php echo $form->textArea($model,'text',array('rows'=>12, 'cols'=>50, 'id'=>'mytextarea')); ?>
 		<?php echo $form->error($model,'text'); ?>
 	</div>
 

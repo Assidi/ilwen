@@ -7,7 +7,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="language" content="ru">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Ubuntu:400,400i,700,700i" rel="stylesheet">	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">	
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap/bootstrap.min.css">	
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection">
@@ -16,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/grid.css">
     
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/textarea.css">
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -62,6 +65,7 @@
                         <? endforeach; ?>                        
                       </ul>
                     </li>
+                    <li><a href="<?=$this->createAbsoluteUrl('/');?>/texts/search">Найти тексты</a></li>
                     <li><a href="<?=$this->createAbsoluteUrl('/');?>/article">Статьи</a></li>
                     <li><a href="#">Иллюстрации</a></li>
                     <? if(!Yii::app()->user->isGuest): ?>
@@ -94,6 +98,11 @@
 	<?php echo $content; ?>
     
     </div>
+    <!--
+<?php if(Yii::app()->params['debug']):?>
+        <pre><?php print_r(Yii::app()->params['debug']);?></pre>
+    <?php endif; ?> 
+--> 
 	<footer>
 		&copy; <?php echo date('Y'); ?> Юлия Понедельник<br/>
 		Все права зарезервированы.<br/>
@@ -103,9 +112,11 @@
 
 </div><!-- page -->
 
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/jquery/jquery-3.2.0.min.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/vendor/js/scripts.js"></script>
 </body>
 </html>

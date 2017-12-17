@@ -41,7 +41,7 @@ class TextsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','epoch', 'race'),
+				'actions'=>array('index','view','epoch', 'race', 'search'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -274,7 +274,33 @@ class TextsController extends Controller
 			'model'=>$model,
 		));
 	}
-
+    
+    /**
+     * Поиск текстов по различным параметрам
+     */
+    public function actionSearch()    
+	{
+	    $characters = Helper::getArrayFromRequest('characters');	
+		$genres = Helper::getArrayFromRequest('genres');
+	    $model=new Texts('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Texts']))
+			$model->attributes=$_GET['Texts'];
+        $requestText = Yii::app()->request->getParam('Texts');
+        
+        $this->pageTitle =Yii::app()->name.' - Поиск текстов'; 
+        $this->render('special',array(
+            'model' => $model,
+            'character' => isset($characters[0]) ? $characters[0] : '',
+			'characters' => Characters::getList($fandom),
+			'genre' =>  isset($genres[0]) ? $genres[0] : '',
+			'genres' => Genres::getList(),
+            'minSize' => $requestText['minSize'],
+            'maxSize' => $requestText['maxSize'],
+		));
+	   
+	}
+	   
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'epochs':
  * @property integer $id
  * @property string $name
- * @property string $picture
  *
  * The followings are the available model relations:
  * @property Texts[] $texts
@@ -29,11 +28,11 @@ class Epochs extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, picture', 'required'),
-			array('name, picture', 'length', 'max'=>50),
+			array('name', 'required'),
+			array('name', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, picture', 'safe', 'on'=>'search'),
+			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,8 +55,7 @@ class Epochs extends CActiveRecord
 	{
 		return array(
 			'id' => 'Номер эпохи',
-			'name' => 'Название эпохи',
-            'picture' => 'Картинка',
+			'name' => 'Название эпохи',            
 		);
 	}
 
@@ -81,7 +79,7 @@ class Epochs extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-        $criteria->compare('picture',$this->picture,true);
+        
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

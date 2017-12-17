@@ -65,5 +65,43 @@
         return $nwords;
     }
     
+    /**
+	 * Проверяет, содержит ли параметр непустой массив
+	 * @param string $param
+	 * @return array
+	 */
+	static function getArrayFromRequest($param) {
+		$requestParam = Yii::app()->request->getParam($param);
+		if (!$requestParam || !is_array($requestParam) || empty($requestParam[0])) {
+			return array();
+		}
+		return $requestParam;
+	}
+    
+    /**
+     * Удаляет нулевой элемент из массива
+     * @param array $array
+	 * @return array
+     */
+    static function deletenull($array) {
+        unset($array[0]);
+        return $array;
+    }
+    
+    /**
+     * Удаляет пустой  элемент из массива
+     * @param array $array
+	 * @return array      
+     */
+     
+     static function deleteEmpty($array) {
+        foreach ($array as $key=>$value) {
+            if ($value=='') {
+                unset($array[$key]);
+            }
+            return $array;
+        }
+     }
+    
   }
 ?>

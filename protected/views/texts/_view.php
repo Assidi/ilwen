@@ -8,7 +8,15 @@
     <div class="text-title">
     <?php echo CHtml::link(CHtml::encode($data->title), array('texts/view', 'id'=>$data->id)); ?>
     </div>	
-
+    
+    <b>Жанр:</b> 
+    <?= $data->genresList(); ?>
+    <br />
+    
+    <b>Персонажи:</b>
+    <?= $data->characterList(); ?>  
+    <br />
+    
 	<b><?php echo CHtml::encode($data->getAttributeLabel('raiting')); ?>:</b>
 	<?php echo CHtml::encode($data->raiting); ?>
 	<br />

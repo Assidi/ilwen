@@ -63,7 +63,7 @@
 
 .grid-view table.items tr.odd
 {
-	background: #CBFCFC;
+	background: #d9efac;
 }
 
 .grid-view table.items tr.selected
@@ -78,7 +78,7 @@
 
 .grid-view table.items tbody tr:hover
 {
-	background: #9FF4F4;
+	background: #94bd42;
 }
 
 .grid-view .link-column img

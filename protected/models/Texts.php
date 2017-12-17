@@ -177,6 +177,19 @@ class Texts extends CActiveRecord
     }
     
     /** 
+    * @return array массив идентификаторов жанров текущего фанфика 
+    */ 
+    public function getGenresArray() {
+        $arGenres = array(); 
+        if ($this->genrestexts) { 
+            foreach($this->genrestexts as $genreTextModel) {                
+                $arGenres[] = $genreTextModel->genre->id; 
+            } 
+        } 
+        return $arGenres;
+    } 
+    
+    /** 
     * @return array список моделей жанров текущего текста 
     */ 
     public function genresList() 
@@ -212,6 +225,22 @@ class Texts extends CActiveRecord
         } 
         return $arCharact;   
     } 
+    
+    /** 
+    * @return array массив идентификаторов персонажей текущего фанфика 
+    */
+    
+    public function getCharactersArray() {
+        $arCharact = array();
+        if ($this->charactertexts) {
+            foreach($this->charactertexts as $charTextModel) { 
+                $arCharact[] = $charTextModel->char->id; 
+            } 
+        } 
+        return $arCharact;        
+    }
+    
+    
     /** 
     * @return string список  персонажей текущего текста через запятую 
     */ 
@@ -278,5 +307,98 @@ class Texts extends CActiveRecord
         return $model;		
     }
     
+    /**
+     * Возвращает максимальный размер фанфика в базе
+     * @return integer 
+     */
     
+    public static function maxSize() {
+        $criteria=new CDbCriteria(array('order'=>'size DESC'));
+        $fanf = self::model()->find($criteria);
+        $size = $fanf->size;        
+        return $size;
+    }
+    /**
+     * Функция для поиска текстов пользователем
+     */
+    
+    public function customSearch() {
+        $criteria=new CDbCriteria;		
+		$criteria->compare('title',$this->title,true);				
+		$criteria->compare('raiting',$this->raiting);			
+        $criteria->compare('summary',$this->summary,true);	
+        $criteria->compare('category',$this->category);
+		$criteria->compare('text',$this->text,true);
+        $criteria->compare('epoch',$this->epoch);
+        $criteria->compare('book',$this->book);
+        $criteria->compare('translate',$this->translate);
+        // вытаскиваем заданный максимальный и минимальный размер
+        $text = Yii::app()->request->getParam('Texts');
+        $minSize = $text['minSize'];
+        if ($minSize) {
+            $criteria->addCondition('size > :min_size');
+            $criteria->params[':min_size'] = (int)$minSize;
+        }
+        $maxSize = $text['maxSize'];
+        if ($maxSize) {
+            $criteria->addCondition('size < :max_size');
+            $criteria->params[':max_size'] = (int)$maxSize;
+        }
+        
+        // теперь вытаскиваем персонажей и жанры
+        $characters = Helper::getArrayFromRequest('characters');
+		$genres = Helper::getArrayFromRequest('genres');
+        
+        $withCriteria = array();
+        if ($characters) {
+            $withCriteria['charactertexts'] = array('together' => true);            
+            $criteria->addInCondition('charactertexts.charid', $characters);
+        }
+        
+        if ($genres) {
+		    $withCriteria['genrestexts'] = array('together' => true);           
+            $criteria->addInCondition('genrestexts.genreid', $genres);
+        }
+		if ($withCriteria) {
+			$criteria->with = $withCriteria;
+		}
+        
+        $criteria->order = 'datePublish DESC';
+        
+        $fanfics = Texts::model()->findAll($criteria);
+        // это мы что-то нашли, теперь собираем идентификаторы 
+        $fanfIds = array();
+        foreach ($fanfics as $fanfic) {
+            // переменная для проверки, тот ли это фанфик. Считаем, что тот, но если 
+            // что-то не совпадет, сделаем ее false
+            $result = true;
+            $id = $fanfic->id;
+            // теперь смотрим, всем ли условиям удовлетворяет фанфик
+            // получаем массивы идентификаторов его персонажей и жанров
+            $currentGenres = $fanfic->getGenresArray();            
+            $currentCharacters = $fanfic->getCharactersArray();            
+            // проверяем по жанрам - все ли жанры из поиска есть у фика
+            if($genres) {
+                foreach($genres as $genre) {
+                    if (!in_array($genre, $currentGenres)) $result = false;
+                }
+            }
+            
+            // теперь по персонажам
+            if ($characters) {
+                foreach($characters as $character) {
+                    if(!in_array($character, $currentCharacters)) $result = false;
+                }
+            }
+                        
+            if($result) $fanfIds[] = $id;            
+        }
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('id', $fanfIds); 
+        $criteria->order = 'datePublish DESC'; 
+        
+        return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+            ));       
+    }
 }

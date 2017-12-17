@@ -1,3 +1,25 @@
+/* подключаем шрифты */
+
+@font-face { 
+  font-family: "Calibri";
+  src: url("../fonts/calibri.woff");
+  font-weight: 400;
+  font-style: normal; 
+} 
+
+@font-face { 
+  font-family: "Calibri";
+  src: url("../fonts/calibrii.woff");
+  font-weight: 400;
+  font-style: italic; 
+}
+
+@font-face { 
+  font-family: "Calibri";
+  src: url("../fonts/calibrib.woff");
+  font-weight: 700;
+  font-style: normal;  
+}
 
 /* Общие стили */
 *{
@@ -11,44 +33,47 @@ ul{
 }
 a{
 	text-decoration:none;
-    color: #11999e;
+    color: #415817;
 }
 
 a:hover {
     text-decoration:underline;
-    color: #11999e;
+    color: #415817;
 }
 
 body{
 	font-family: 'Roboto', sans-serif;
-    background-image: url(../images/fon.jpg);
-    background-repeat: repeat;
+    background-image: url(../images/map.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
     background-color: #F0F0F0;  
     padding: 20px 0;  
+    color: #000000;
 }
 
 h1 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Calibri', sans-serif;
     font-weight: bold;
     font-size: 3em;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
-    color: #11999e;
+    color: #295200;
 }
 
 h2 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Calibri', sans-serif;
     font-weight: bold;
     font-size: 2em;
     text-align: center;
-    color: #11999e;
+    color: #295200;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 h3 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Calibri', sans-serif;
     font-weight: bold;
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -58,17 +83,18 @@ h3 {
     width:90%;
     margin:0 auto;
     padding: 0px;
-    background-color: #F0F0F0;
+     
 }
 
 .main-content {
     padding: 30px;
+    background-color: rgba(240, 240, 240, 0.85);
 }
 
 /* Хедер и главное меню */
 
 header {
-    padding: 15px 0;
+    /*padding: 15px 0;*/
 }
 
 .site-head {
@@ -81,65 +107,83 @@ header {
 }
 
 .head{
-    padding:15px 0;    
+    padding:50px 0;    
     overflow:hidden;    
-    background-image: url(../images/banner.jpg);
+    background-image: url(../images/Mithrim1.jpg);
     background-repeat: no-repeat;
     background-position: center;    
+    background-size: 100% 100%;
 }
 
 .navbar-my{
-    background-color: #30e3ca;
-    color: #333333;
+    /*background-color: #94bd42;*/
+    background: linear-gradient(to top, #556b2f, #97c042);
+    color: #000000;   
+    margin-bottom: 0; 
 }
 
 .navbar-my ul li a{
-    color: #333333;
+    color: #000000;
     text-decoration: none;
 }
 
 .navbar-my ul li a:hover{
-    background-color: #11999e;
+    background-color: #415817;
     color: #ffffff;
     text-decoration: none;
 }
 
 li.active a {
-    background-color: #11999e;
+    background-color: #415817;
     color: #ffffff;
 }
 
 .dropdown-toggle:hover {
-    background-color: #11999e;
+    background-color: #415817;
     color: #ffffff;
 }
 
 .dropdown-menu {
-    background-color: #30e3ca;
+    background-color: #94bd42;
 }
 
 .dropdown-menu li a {
-    background-color: #30e3ca;
+    background-color: #94bd42;
 }
 
 .dropdown-menu li a:hover {
-    background-color: #11999e;
+    background-color: #415817;
     color:#ffffff;
 }
 
 .dropdown-toggle:hover {
-    background-color: #11999e;
+    background-color: #415817;
     color:#ffffff;    
 }
 
 .open a:hover {
-    background-color: #11999e;
+    background-color: #415817;
     color:#ffffff;
 }
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
-    background-color: #11999e;
+    background-color: #415817;
     
+}
+
+/* главная страница */
+
+.image-main {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.a-main {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 /* меню администратора для текста*/
@@ -158,15 +202,15 @@ li.active a {
 }
 
 .adminmenu ul li a {
-    color: #11999e;
+    color: #415817;
 }
 
 /*  Список текстов - стили для шапки каждого текста */
 
 .view-text {    
     border: 1px solid #888888;
-    border-radius: 5px;
-    background-color: #ffffff;
+    border-radius: 5px;    
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 10px 20px;
     margin-bottom: 20px;
 }
@@ -177,7 +221,7 @@ li.active a {
 }
 
 .text-title a {
-    color: #11999e;
+    color: #295200;
     font-weight: bold;
 }
 
@@ -216,7 +260,7 @@ li.active a {
 
 .note {
     cursor: pointer;
-    color: #11999e;    
+    color: #415817;    
 }
 
 /* пагинация */
@@ -234,7 +278,7 @@ li.active a {
     margin-right: 5px;
     border-radius: 0;
     padding: 5px 7px;
-    background-color: #30e3ca;
+    background-color: #94bd42;
     color: #333333;
     text-decoration: none;
     border: none;
@@ -242,14 +286,14 @@ li.active a {
 }
 
 .pager li a:hover {
-    background-color: #11999e;
+    background-color: #415817;
     color: #ffffff;
 }
 
 .pager .selected a{
     background-color: #ffffff;
     color: #333333;
-    border: 1px solid #11999e;
+    border: 1px solid #415817;
 }
 
 .pager .previous > a, .pager .previous > span {
@@ -290,7 +334,7 @@ div.form span.required {
 
 
 input[type="submit"] {
-    background-color: #30e3ca;
+    background-color: #94bd42;
     border: medium none;
     border-radius: 3px;
     color: #333333;
@@ -312,8 +356,15 @@ div.form select {
 }
 
 input[type="submit"]:hover {
-    background-color: #11999e;
+    background-color: #415817;
     color: #ffffff;
+}
+
+#minsize, #maxsize {
+    display: inline-block;
+    width: 150px;
+    padding: 5px;
+    margin: 10px;
 }
 
 /* Персонажи - админка */

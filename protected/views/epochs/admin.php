@@ -47,7 +47,7 @@ or <b>=</b>) в начале каждого поля поиска.
 	'columns'=>array(
 		'id',
 		'name',
-		'picture',
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

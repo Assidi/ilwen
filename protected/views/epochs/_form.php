@@ -23,13 +23,8 @@
 		<?php echo $form->labelEx($model,'name'); ?><br />
 		<?php echo $form->textField($model,'name',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'name'); ?>
-	</div>
+	</div>    
     
-    <div class="form-group">
-		<?php echo $form->labelEx($model,'picture'); ?><br />
-		<?php echo $form->textField($model,'picture',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'picture'); ?>
-	</div>
 
 	<div class="form-group">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
